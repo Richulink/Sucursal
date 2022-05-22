@@ -15,7 +15,6 @@
 ######  Spring data JPA.Spring data JPA
 ######  Lombok
 ###### MySQL connector
-###### MySQL connector
 ###### Spring Web
 ###### springdoc-openapi-ui / aplicacion sencilla sin configuración de swagger
 
