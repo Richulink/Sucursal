@@ -2,6 +2,8 @@ package com.example.Sucursal.controller;
 
 import com.example.Sucursal.domain.Sucursal;
 import com.example.Sucursal.service.SucursalServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import java.util.Optional;
 @RestController(value = "/")
 public class SuController {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(SuController.class);
 
     private SucursalServiceImpl sucursalesServiceImpl;
 
@@ -23,9 +27,12 @@ public class SuController {
 
         try {
              Optional sucursalCercana = sucursalesServiceImpl.distanciaCercana(inlatitud, inlongitud);
+             logger.info("comparando valores de laitud y longitud");
+
             return new ResponseEntity(sucursalCercana, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            logger.warn(e.toString(),e);
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -33,13 +40,14 @@ public class SuController {
 
     @GetMapping("/buscar_por_id/{id}")
     ResponseEntity<Sucursal> buscarPorId(@PathVariable("id") Long id) {
-        try {
-            Optional<Sucursal> buscarId = sucursalesServiceImpl.findById(id);
-            return new ResponseEntity(buscarId, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
 
+            Optional<Sucursal> buscarId = sucursalesServiceImpl.findById(id);
+            if (buscarId.isPresent()) {
+                return new ResponseEntity(buscarId, HttpStatus.OK);
+            } else {
+                String mensaje = "no existe tal registro con ese id";
+                return new ResponseEntity(mensaje, HttpStatus.NOT_FOUND);
+        }
     }
 
 
@@ -56,10 +64,11 @@ public class SuController {
             sucursal.setLatitud(mod_Sucursal.getLatitud());
             sucursal.setLongitud(mod_Sucursal.getLongitud());
             sucursalesServiceImpl.add(sucursal);
-
+            logger.info("modificando registro");
             return new ResponseEntity<>(sucursal, HttpStatus.CREATED);
         }else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            String mensaje = "no existe tal registro con ese id";
+            return new ResponseEntity(mensaje, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -67,7 +76,7 @@ public class SuController {
     public ResponseEntity<Sucursal> modificarSucursal(@RequestBody Sucursal nuevaSucursal) {
         try {
             Sucursal sucursal = sucursalesServiceImpl.add(nuevaSucursal);
-
+            logger.info("creando nueva sucursal");
             return new ResponseEntity<>(sucursal, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -82,7 +91,8 @@ public class SuController {
                 sucursalesServiceImpl. eliminarPorIdSiExite(id);
                 return new ResponseEntity<>(HttpStatus.OK);
             }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                String mensaje = "no existe tal registro";
+            return new ResponseEntity(mensaje,HttpStatus.NOT_FOUND);
         }
     }
 }
