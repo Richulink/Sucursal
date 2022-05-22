@@ -40,9 +40,8 @@ public class SucursalServiceImpl implements SucursalService {
         return sucursalRepo.findByDistanciaCercana(inlatitud,inlongitud).stream().findFirst();
     }
 
-    public void deleteById(long id) {
-        sucursalRepo.deleteById(id);
+    public void eliminarPorIdSiExite(long id) {
+
+            sucursalRepo.deleteById(id);
     }
-
-
 }

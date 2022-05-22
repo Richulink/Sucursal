@@ -18,7 +18,7 @@ public class SuController {
         this.sucursalesServiceImpl = sucursalesServiceImpl;
     }
 
-    @GetMapping("/{longitud}/{latitud}")
+    @GetMapping("/{latitud}/{longitud}")
     ResponseEntity<Sucursal> calculadorDeDistancia(@PathVariable("latitud") Double inlatitud, @PathVariable("longitud") Double inlongitud) {
 
         try {
@@ -58,8 +58,9 @@ public class SuController {
             sucursalesServiceImpl.add(sucursal);
 
             return new ResponseEntity<>(sucursal, HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/crear_sucursal")
@@ -76,11 +77,12 @@ public class SuController {
 
     @DeleteMapping("/eliminar-por-id/{id}")
     public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
-        try {
-            sucursalesServiceImpl.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        Optional resp = sucursalesServiceImpl.findById(id);
+            if(resp.isPresent()){
+                sucursalesServiceImpl. eliminarPorIdSiExite(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
