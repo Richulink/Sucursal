@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32aab53b-d0ba-406c-aa25-123b067a7462" name="Default Changelist" comment="-mejora en la eliminacion por id">
+    <list default="true" id="32aab53b-d0ba-406c-aa25-123b067a7462" name="Default Changelist" comment="-logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Sucursal/controller/SuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Sucursal/controller/SuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Sucursal/controller/SuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Sucursal/controller/SuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/Sucursal/controller/SuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/Sucursal/controller/SuControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,7 @@
       <recent name="C:\Users\elren\Desktop\Repo\Sucursal-Api" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SucursalApplication">
+  <component name="RunManager" selected="JUnit.SuControllerTest">
     <configuration name="SucursalApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.Sucursal.SucursalApplication" />
       <module name="Sucursal-api" />
@@ -63,10 +62,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SuControllerTest.crearSucursal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sucursal-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Sucursal.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Sucursal.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Sucursal.controller.SuControllerTest" />
+      <option name="METHOD_NAME" value="crearSucursal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SuControllerTest.distanciaCercana" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sucursal-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Sucursal.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Sucursal.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Sucursal.controller.SuControllerTest" />
+      <option name="METHOD_NAME" value="distanciaCercana" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SucursalApplication" />
         <item itemvalue="JUnit.SuControllerTest" />
+        <item itemvalue="JUnit.SuControllerTest.crearSucursal" />
+        <item itemvalue="JUnit.SuControllerTest.distanciaCercana" />
+        <item itemvalue="Application.SucursalApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -100,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653237150821</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="-logs">
+      <created>1653242183303</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653242183303</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +159,7 @@
     <MESSAGE value="-" />
     <MESSAGE value="-swagger" />
     <MESSAGE value="-mejora en la eliminacion por id" />
-    <option name="LAST_COMMIT_MESSAGE" value="-mejora en la eliminacion por id" />
+    <MESSAGE value="-logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="-logs" />
   </component>
 </project>

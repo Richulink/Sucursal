@@ -54,7 +54,6 @@ class SuControllerTest {
 
         response.andDo(print()).
                 andExpect(status().isCreated())
-
                 .andExpect(jsonPath("$.direccion",
                         is(crear_sucursal.getDireccion())))
                 .andExpect(jsonPath("$.latitud",
@@ -63,8 +62,6 @@ class SuControllerTest {
                         is(crear_sucursal.getLongitud())))
                 .andExpect(jsonPath("$.horarioDeAtencion",
                         is(crear_sucursal.getHorarioDeAtencion())));
-
-
     }
 
     @Test
@@ -74,6 +71,7 @@ class SuControllerTest {
 
         List<Sucursal> listaDeSucursales = new ArrayList<>();
         listaDeSucursales.add(Sucursal.builder()
+                //.id(1L)
                 .horarioDeAtencion("8:00/12:00_16:00/20:00")
                 .direccion("calle 28_n°9347")
                 .latitud(1.456)
@@ -104,54 +102,35 @@ class SuControllerTest {
 
 
 
+    // caso de prueba sin exito con creacion de registro nuevo
+
+
+    /*
+     @Test
+    void crearSucursal() throws Exception {
+
+        Sucursal crear_sucursal =
+                new Sucursal(null,"calle 26 n°3344","8:00/12:00_16:00/20:00",5.432,5.4324);
+
+
+        ResultActions response = mockMvc.perform(post("/crear_sucursal")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(crear_sucursal)));
+
+        response.andDo(print()).
+                andExpect(status().isCreated())
+                // interviene  el ID que hace la modificacón del registro y no la creacion
+                .andExpect(jsonPath("$.id",
+                        is(crear_sucursal.getId())))
+                .andExpect(jsonPath("$.direccion",
+                        is(crear_sucursal.getDireccion())))
+                .andExpect(jsonPath("$.latitud",
+                        is(crear_sucursal.getLatitud())))
+                .andExpect(jsonPath("$.longitud",
+                        is(crear_sucursal.getLongitud())))
+                .andExpect(jsonPath("$.horarioDeAtencion",
+                        is(crear_sucursal.getHorarioDeAtencion())));
+    }
+     */
 }
 
-
-/*
-
-
- sucursalRepo.saveAll(listaDeSucursals);
-
-        List<Sucursal> listOfEmployees = new ArrayList<>();
-
-        listOfEmployees.add(Sucursal.builder().build())
-
-        Sucursal distancia_sucursal = new Sucursal
-                (null,"calle 26 n°3344","8:00/12:00_16:00/20:00",5.432,5.4324);
-
-        Sucursal distancia_sucursal2 = new Sucursal
-                (null,"calle 26 n°3344","8:00/12:00_16:00/20:00",5.432,5.4324);
-
-
-
- */
-
-
-
-
-
-
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootApplication(scanBasePackageClasses = {ApplicationContext.class} )
-
-
-//  @Autowired
-//    private MockMvc mvc;
-//
-//    @MockBean
-//    private SucursalRepo sucursalRepo;
-//
-//    @MockBean
-//    SucursalServiceImpl service;
-//
-//    @Autowired
-//    protected WebApplicationContext webApplicationContext;
-
-
-// mvc.perform(post("/crear_sucursal")
-//                    .contentType(MediaType.APPLICATION_JSON)
-//                    .content("{\"id\":\"6\",\"direccion\":\"2013-10-11T20:10:10\"}"))
-//                    .andExpect(status().isCreated())
-//                    .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-//                    .andExpect((ResultMatcher) jsonPath("$.id", is(1)))
-//                    .andExpect((ResultMatcher) jsonPath("$.direccion", is("2013-10-11T20:10:10")));
